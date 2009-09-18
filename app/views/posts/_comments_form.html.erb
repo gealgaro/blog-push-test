@@ -1,0 +1,23 @@
+<div id="new_comment_div" style="display:none">
+  <h1>New comment</h1>
+  <% form_for(@comment) do |f| %>
+    <%= f.error_messages %>
+    <div>
+      <%= f.label :author %><br />
+      <%= f.text_field :author %>
+    </div>
+    <div>
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div>
+      <%= f.label :body %><br />
+      <%= f.text_area :body %>
+    </div>
+    <div>
+      <%= f.hidden_field(:post_id) %>
+      <%= f.submit 'Create' %>
+    </div>
+  <% end %>
+</div>
+<a href="javascript:void(0)" onclick="document.getElementById('new_comment_div').style.display='';">New comment</a>

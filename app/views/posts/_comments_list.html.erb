@@ -1,0 +1,12 @@
+<div class="link2">Comments</div>
+
+<% @comments.each do |comment| %>
+<div class="commentDiv">
+    <p><%=comment.created_at.strftime('%b %d %Y, %H:%M ')%><%=h comment.author %> said:</p>
+    <p><%=h comment.body %></p>
+    <p><%=h comment.email %></p>
+    <%= link_to 'Edit', edit_post_comment_path(comment) %>
+    <%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %>
+</div>
+<br />
+<% end %>

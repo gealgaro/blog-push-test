@@ -1,0 +1,10 @@
+<div><%= link_to @post.title, post_path, :class => 'postTitle' %>&nbsp;</div>
+<div class="postInfo"><%=h @post.created_at.strftime('Posted %b %d %Y, %H:%M') %> | <%=h @post.updated_at.strftime('Last Updated %b %d %Y, %H:%M') %> | <%= Comment.find_all_by_post_id(@post.id).count %> Coments</div>
+<div class="postContent"><%=h @post.body %></div>
+<%= link_to 'Edit', edit_post_path(@post), :class => 'link1' if logged_in? %>
+<%= link_to 'Back', posts_path, :class => 'link1' %>
+<br />
+<br />
+<%= render :partial => "comments_list" %>
+<br />
+<%= render :partial => "comments_form" %>

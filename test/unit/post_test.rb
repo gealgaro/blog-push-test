@@ -1,0 +1,11 @@
+require 'test_helper'
+
+class PostTest < ActiveSupport::TestCase
+  context "A post must have a title and body" do
+    setup do
+      @post = Factory(:post)
+    end
+    should_validate_presence_of :title
+    should_validate_presence_of :body
+  end
+end

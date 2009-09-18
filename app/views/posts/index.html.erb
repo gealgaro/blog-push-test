@@ -1,0 +1,32 @@
+<% @posts.each do |post| %>
+  <div class="postBlock">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>
+          <div class="tbmargin">
+            <div><%= link_to post.title, post, :class => 'postTitle' %>&nbsp;<u><%= link_to 'Edit', edit_post_path(post), :class => 'link1' if logged_in? %></u>&nbsp;<u><%= link_to 'Destroy', post, :class => 'link1', :confirm => 'Are you sure?', :method => :delete  if logged_in? %></u></div>
+            <div class="postInfo"><%=h post.created_at.strftime('Posted %b %d %Y, %H:%M') %> | <%=h post.updated_at.strftime('Last Updated %b %d %Y, %H:%M') %> | <%= Comment.find_all_by_post_id(post.id).count %> Coments</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="tbmargin">
+            <div class="postContent"><%=h post.body %></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="tbmargin">
+            <div class="postFooter">ShareThis</div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+<% end %>
+
+<br />
+
+<%= link_to 'New post', new_post_path %>
